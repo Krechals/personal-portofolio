@@ -9,15 +9,13 @@
   margin-top: 20px;
 }
 
-header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
+.masthead {
   height: 100vh;
   text-align: center;
   color: #adb5bd;
   background-image: url("/images/header-background.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center;
+  background-position: 30% 0%;
   background-size: cover;
 }
