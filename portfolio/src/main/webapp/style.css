@@ -1,4 +1,14 @@
 
+body {
+  background-image: url("/images/main-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #adb5bd;
+  text-align: center;
+  height: 100%;
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
@@ -20,11 +30,22 @@
   text-align: center;
 }
 
-.secondary-background {
+.secondary-masthead {
   background-image: radial-gradient(rgb(42, 42, 42), rgb(8, 47, 78));
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: scroll;
   color: #adb5bd;
   height: 100vh;
   text-align: center;
+}
+.page-section h3.section-subheading {
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  margin-bottom: 4rem;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
 }
