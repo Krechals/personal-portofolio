@@ -10,12 +10,12 @@
 }
 
 .masthead {
+  background-attachment: scroll;
+  background-image: url("/images/header-background.jpg");
+  background-position: 30% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #adb5bd;
   height: 100vh;
   text-align: center;
-  color: #adb5bd;
-  background-image: url("/images/header-background.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: 30% 0%;
-  background-size: cover;
 }
