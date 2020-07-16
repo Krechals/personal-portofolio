@@ -8,8 +8,6 @@
     <!-- Bootstrap open-source CSS framework -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
     </head>
   <body>
     <!-- Navigation Bar -->
@@ -40,14 +38,14 @@
         <div class="row h-100 align-items-center">
           <div class="col-12 text-center">
             <h1 class="font-weight-light" id="lighter-font">My Passions</h1>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Find out more</a>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#passion-list">Find out more</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- About Section -->
-    <section class="page-section" id="about">
+    <!-- Passion-List Section -->
+    <section class="page-section" id="passion-list">
       <div class="container">
         <div class="text-center">
           <h2 class="section-heading text-uppercase">My Passions</h2>
@@ -81,5 +79,46 @@
         </div>
       </div>
     </section>
+    <!-- Slideshow Section -->
+    <section class="page-section" id="sldeshow">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">My Passions</h2>
+          <h3 class="section-subheading text-muted">Here is a brief list with some of the things I enjoy doing in my spare time</h3>
+        </div>
+        <div class="slideshow-container">
+          <div class="slides my-fade">
+            <div class="numbertext">1 / 3</div>
+            <img src="images/delta-danube.jpg" class="rounded">
+            <div class="text">Delta Danube</div>
+          </div>
+
+          <div class="slides my-fade">
+            <div class="numbertext">2 / 3</div>
+            <img src="images/fagaras.jpg" class="rounded">
+            <div class="text">Fagaras Moutains</div>
+          </div>
+
+          <div class="slides my-fade">
+            <div class="numbertext">3 / 3</div>
+            <img src="images/sinaia.jpg" class="rounded">
+            <div class="text">Sinaia</div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+      </div>
+    </section>
   </body>
+  <script src="script.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 </html>
