@@ -241,32 +241,33 @@ body {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 650px;
-  max-height: 450px;
-  position: relative;
   margin: auto;
+  max-height: 450px;
+  max-width: 650px;
   overflow: hidden;
+  position: relative;
 }
 
 /* Next & Previous buttons */
 .prev, .next {
+  border-radius: 0 3px 3px 0;
+  color: white;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: -22px;
+  padding: 16px;
   position: absolute;
   top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
   transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
   user-select: none;
+  width: auto;
+
 }
 
 .next {
-  right: 0;
   border-radius: 3px 0 0 3px;
+  right: 0;
 }
 
 .prev:hover, .next:hover {
@@ -275,13 +276,13 @@ body {
 
 /* Caption text */
 .text {
+  bottom: 8px;
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 8px;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 /* Number text (1/3 etc) */
@@ -295,14 +296,14 @@ body {
 
 /* Dot selectors */
 .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
+  cursor: pointer;
   display: inline-block;
+  height: 15px;
+  margin: 0 2px;
   transition: background-color 0.6s ease;
+  width: 15px;
 }
 
 .active, .dot:hover {
@@ -311,10 +312,10 @@ body {
 
 /* Fading animation */
 .my-fade {
-  -webkit-animation-name: my-fade;
-  -webkit-animation-duration: 2s;
-  animation-name: my-fade;
   animation-duration: 2s;
+  animation-name: my-fade;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-name: my-fade;
 }
 
 @-webkit-keyframes my-fade {

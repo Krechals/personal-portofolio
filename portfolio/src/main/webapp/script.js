@@ -29,26 +29,37 @@ function addRandomGreeting() {
 var slideIndex = 1;
 showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function plusSlides(offset) {
+  showSlides(slideIndex += offset);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentSlide(newSlideIndex) {
+  showSlides(slideIndex = newSlideIndex);
 }
 
-function showSlides(n) {
+function showSlides(activatedSlide) {
   var i;
   var slides = document.getElementsByClassName("slides");
   var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
+
+  if (activatedSlide > slides.length) {
+    slideIndex = 1;
+  }  
+  if (activatedSlide < 1) {
+    slideIndex = slides.length
+  }
+  
+  // Make all photos invisible
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
   }
+
+  // Disable all dots
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+
+  // Enable specific photo
+  slides[slideIndex - 1].style.display = "block";  
+  dots[slideIndex - 1].className += " active";
 }
