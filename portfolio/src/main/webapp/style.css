@@ -62,6 +62,9 @@ body {
   font-weight: 400;
   margin-bottom: 4rem;
 }
+.pass-header {
+  margin-top: 1rem !important;
+}
 .text-uppercase {
   text-transform: uppercase !important;
 }
