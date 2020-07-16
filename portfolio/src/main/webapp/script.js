@@ -48,7 +48,7 @@ function showSlides(activatedSlide) {
   if (activatedSlide < 1) {
     slideIndex = slides.length
   }
-  
+
   // Make all photos invisible
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
@@ -62,4 +62,7 @@ function showSlides(activatedSlide) {
   // Enable specific photo
   slides[slideIndex - 1].style.display = "block";  
   dots[slideIndex - 1].className += " active";
+
+  // Autoplay at every 3 seconds.
+  setTimeout(plusSlides, 3000, 1);
 }
