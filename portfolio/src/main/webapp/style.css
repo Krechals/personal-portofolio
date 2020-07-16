@@ -39,6 +39,22 @@ body {
   height: 100vh;
   text-align: center;
 }
+#passions.secondary-masthead {
+  background-image: url("/images/passions-background.jpg");
+  background-position: 30% 0%;
+}
+#lighter-font {
+  color: #86d9dd;
+}
+.secondary-masthead {
+  background-attachment: scroll;
+  background-image: radial-gradient(rgb(42, 42, 42), rgb(8, 47, 78));
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #adb5bd;
+  height: 100vh;
+  text-align: center;
+}
 .page-section h3.section-subheading {
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   font-size: 1rem;
