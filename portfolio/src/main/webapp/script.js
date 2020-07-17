@@ -13,11 +13,10 @@
 // limitations under the License.
 
 (function ($) {
-  "use strict"; // Start of use strict
-
-  // Collapse Navbar
+  "use strict";
+  
   var navbarCollapse = function() {
-    var mainNav = $("#mainNav");
+    var mainNav = $("#main-nav");
     if (mainNav.offset().top > 100) {
       mainNav.addClass("navbar-shrink");
     } else {
@@ -27,4 +26,4 @@
 
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
-})(jQuery); // End of use strict
+})(jQuery);
