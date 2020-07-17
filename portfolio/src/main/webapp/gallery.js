@@ -18,10 +18,18 @@ var travelSlideshow = {
     }
   },
   showSlides: function(activatedSlide) {
-    var i;
     var slides = document.getElementsByClassName("slides");
     var dots = document.getElementsByClassName("dot");
-
+    if (slides == undefined || slides.length == 0
+        || dots == undefined || dots.length == 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No slideshow available!',
+        footer: '<a href="passions.html">Maybe try again!</a>'
+      })
+      return;
+    }
     // Keeps counter in the proper interval
     if (activatedSlide >= slides.length) {
       this.slideIndex = 0;
