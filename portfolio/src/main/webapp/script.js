@@ -12,17 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+(function ($) {
+  "use strict"; // Start of use strict
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Collapse Navbar
+  var navbarCollapse = function() {
+    var mainNav = $("#mainNav");
+    if (mainNav.offset().top > 100) {
+      mainNav.addClass("navbar-shrink");
+    } else {
+      mainNav.removeClass("navbar-shrink");
+    }
+  };
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
+  // Collapse the navbar when page is scrolled
+  $(window).scroll(navbarCollapse);
+})(jQuery); // End of use strict
