@@ -8,6 +8,10 @@
     <!-- Bootstrap open-source CSS framework -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
+    <script src="gallery.js"></script>
+    <!-- Fontawesome CDN -->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -44,7 +48,6 @@
       </div>
     </div>
 
-    <!-- Passion-List Section -->
     <section class="page-section" id="passion-list">
       <div class="container">
         <div class="text-center">
@@ -79,8 +82,8 @@
         </div>
       </div>
     </section>
-    <!-- Slideshow Section -->
-    <section class="page-section" id="sldeshow">
+
+    <section class="page-section" id="slideshow">
       <div class="container">
         <div class="text-center">
           <h2 class="section-heading text-uppercase">Travel gallery</h2>
@@ -104,20 +107,18 @@
             <img src="images/sinaia.jpg" class="rounded">
             <div class="text">Sinaia</div>
           </div>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <a class="prev" onclick="travelSlideshow.plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="travelSlideshow.plusSlides(1)">&#10095;</a>
         </div>
 
         <br>
 
         <div style="text-align:center">
-          <span class="dot" onclick="currentSlide(1)"></span> 
-          <span class="dot" onclick="currentSlide(2)"></span> 
-          <span class="dot" onclick="currentSlide(3)"></span> 
+          <span class="dot" onclick="travelSlideshow.currentSlide(0)"></span> 
+          <span class="dot" onclick="travelSlideshow.currentSlide(1)"></span> 
+          <span class="dot" onclick="travelSlideshow.currentSlide(2)"></span> 
         </div>
       </div>
     </section>
   </body>
-  <script src="script.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
 </html>
