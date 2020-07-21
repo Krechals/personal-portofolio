@@ -40,3 +40,18 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+(function ($) {
+  "use strict";
+  
+  var navbarCollapse = function() {
+    var mainNav = $("#main-nav");
+    if (mainNav.offset().top > 100) {
+      mainNav.addClass("navbar-shrink");
+    } else {
+      mainNav.removeClass("navbar-shrink");
+    }
+  };
+
+  // Collapse the navbar when page is scrolled
+  $(window).scroll(navbarCollapse);
+})(jQuery);
