@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.sps.data.ServerStats;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.io.IOException;
-import java.util.Date;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/server-dates")
 public final class ServerDatesServlet extends HttpServlet {
-  private List<Date> dateList = new ArrayList<>();
+  private final List<ServerStats> dateList = new ArrayList<>();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Add another entry to the list
-    Date currentTime = new Date();
-    dateList.add(currentTime);
-
+    LocalDate date = LocalDate.now();
+    LocalTime time = LocalTime.now();
+    dateList.add(new ServerStats(date, time));
+  
     // Convert the server dates to JSON
     String json = convertToJson(dateList);
 
@@ -32,7 +35,7 @@ public final class ServerDatesServlet extends HttpServlet {
   /**
    * Converts list of dates into a JSON string using the Gson library.
    */
-  private String convertToJson(List<Date> dateList) {
+  private static String convertToJson(List<ServerStats> dateList) {
     Gson gson = new Gson();
     String json = gson.toJson(dateList);
     return json;

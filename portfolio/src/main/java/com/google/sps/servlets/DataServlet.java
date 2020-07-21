@@ -26,11 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/random-welcome")
 public class DataServlet extends HttpServlet {
 
-  private List<String> welcomes;
+  private final List<String> welcomes = new ArrayList<>();;
 
   @Override
   public void init() {
-    welcomes = new ArrayList<>();
     welcomes.add("Welcome!");
     welcomes.add("Have a nice day!");
     welcomes.add("Discover me!");

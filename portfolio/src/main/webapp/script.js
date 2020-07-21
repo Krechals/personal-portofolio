@@ -25,9 +25,13 @@ async function getServerDates() {
   const dates = await response.json();
   const body = document.getElementsByTagName('body')[0];
   body.innerHTML = '';
-  dates.forEach(function(date) {
+  dates.forEach(function(stats) {
     body.appendChild(
-        createListElement('Server was accessed at: ' + date));
+        createListElement('Server was accessed on: ' + stats.date.day + '/' 
+                                                     + stats.date.month + '/' 
+                                                     + stats.date.year + ' at ' 
+                                                     + stats.time.minute + ':' 
+                                                     + stats.time.hour));
   });
 }
 /** Creates an <li> element containing text. */
