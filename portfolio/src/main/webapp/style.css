@@ -1,4 +1,73 @@
+#main-nav {
+  background-color: #212529;
+  padding-bottom: 0.7rem;
+  padding-top: 0.7rem;
+}
 
+#main-nav .navbar-toggler {
+  background-color: #fed136;
+  border: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 0.75rem;
+  padding: 0.75rem;
+  text-transform: uppercase;
+}
+
+#main-nav .navbar-brand {
+  color: #ffc107;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+}
+
+#main-nav .nav-link {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.07em;
+}
+
+#main-nav .nav-link.active, #main-nav .nav-link:hover {
+  color: #fed136;
+}
+
+@media (min-width: 992px) {
+  #main-nav {
+    background-color: transparent;
+    border: none;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem; 
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  }
+
+  #main-nav .navbar-brand {
+    font-size: 1.5em;
+    transition: font-size 0.3s ease-in-out;
+  }
+
+  #main-nav .navbar-brand img {
+    height: 2rem;
+    transition: height 0.3s ease-in-out;
+  }
+
+  #main-nav.navbar-shrink {
+    background-color: #212529;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  #main-nav.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+  }
+
+  #main-nav .navbar-nav .nav-item {
+    margin-right: 1rem;
+  }
+
+  #main-nav .navbar-nav .nav-item:last-child {
+    margin-right: 0;
+  }
+}
 body {
   background-image: url("/images/main-background.jpg");
   background-repeat: no-repeat;
@@ -39,13 +108,16 @@ body {
   height: 100vh;
   text-align: center;
 }
+
 #passions.secondary-masthead {
   background-image: url("/images/passions-background.jpg");
   background-position: 30% 0%;
 }
+
 #lighter-font {
   color: #86d9dd;
 }
+
 .secondary-masthead {
   background-attachment: scroll;
   background-image: radial-gradient(rgb(42, 42, 42), rgb(8, 47, 78));
@@ -55,6 +127,7 @@ body {
   height: 100vh;
   text-align: center;
 }
+
 .page-section h3.section-subheading {
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   font-size: 1rem;
@@ -62,15 +135,19 @@ body {
   font-weight: 400;
   margin-bottom: 4rem;
 }
+
 .pass-header {
   margin-top: 1rem !important;
 }
+
 .text-uppercase {
   text-transform: uppercase !important;
 }
+
 .page-section {
   padding: 6rem 0;
 }
+
 .institution-name {
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
   font-size: 0.8rem;
@@ -84,6 +161,7 @@ body {
   position: relative;
   padding: 0;
 }
+
 .timeline:before {
   background-color: #e9ecef;
   bottom: 0;
@@ -94,18 +172,22 @@ body {
   top: 0;
   width: 2px;
 }
+
 .timeline > li {
   margin-bottom: 50px;
   min-height: 50px;
   position: relative;
 }
+
 .timeline > li:after, .timeline > li:before {
   content: " ";
   display: table;
 }
+
 .timeline > li:after {
   clear: both;
 }
+
 .timeline > li .timeline-panel {
   float: right;
   padding: 0 20px 0 100px;
@@ -113,18 +195,21 @@ body {
   text-align: left;
   width: 100%;
 }
+
 .timeline > li .timeline-panel:before {
   right: auto;
   left: -15px;
   border-right-width: 15px;
   border-left-width: 0;
 }
+
 .timeline > li .timeline-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
   right: auto;
 }
+
 .timeline > li .timeline-image {
   background-color: #201f50;
   border: 7px solid black;
@@ -138,47 +223,57 @@ body {
   width: 80px;
   z-index: 100;
 }
+
 .timeline > li .timeline-image h4 {
   font-size: 10px;
   line-height: 14px;
   margin-top: 12px;
 }
+
 .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
   padding: 0 20px 0 100px;
   text-align: left;
 }
+
 .timeline > li.timeline-inverted > .timeline-panel:before {
   border-left-width: 0;
   border-right-width: 15px;
   left: -15px;
   right: auto;
 }
+
 .timeline > li.timeline-inverted > .timeline-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
   right: auto;
 }
+
 .timeline > li:last-child {
   margin-bottom: 0;
 }
+
 .timeline .timeline-heading h4 {
   margin-top: 0;
   color: inherit;
 }
+
 .timeline .timeline-heading h4.subheading {
   text-transform: none;
 }
+
 .timeline .timeline-body > ul,
 .timeline .timeline-body > p {
   margin-bottom: 0;
 }
+
 .img-fluid {
   height: -webkit-fill-available;
   max-width: 100%;
   width: -webkit-fill-available;
 }
+
 @media (min-width: 768px) {
   .timeline:before {
     left: 50%;
