@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     </head>
-  <body onload="getRandomWelcome()">
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
@@ -33,16 +33,26 @@
       </div>
     </nav>
         
-    <!-- Masthead section -->
-    <header class="masthead">
+    <div class="secondary-masthead">
+      <!-- Masthead section -->
       <div class="container h-100">
         <div class="row h-100 align-items-center">
           <div class="col-12 text-center">
-            <h1 class="font-weight-light" id="welcome-msg"></h1>
-            <p class="lead">Andrei Topala Portofolio</p>
+            <h1 class="font-weight-light">Contacts</h1>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#review">Write me a review</a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+
+    <section class="page-section" id="review">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-heading text-uppercase">Review</h2>
+          <h3 class="section-subheading text-muted">If you appreciate my work, please leave me a review</h3>
+        </div>
+        
+      </div>
+    </section>
   </body>
 </html>
