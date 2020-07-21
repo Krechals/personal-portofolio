@@ -1,13 +1,12 @@
 package com.google.sps.servlets;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.sps.data.ServerStats;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +36,6 @@ public final class ServerDatesServlet extends HttpServlet {
    */
   private static String convertToJson(List<ServerStats> dateList) {
     Gson gson = new Gson();
-    String json = gson.toJson(dateList);
-    return json;
+    return gson.toJson(dateList);
   }
 }

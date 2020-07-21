@@ -20,6 +20,7 @@ async function getRandomWelcome() {
   const welcome = await response.text();
   document.getElementById('welcome-msg').innerText = welcome;
 }
+
 async function getServerDates() {
   const response = await fetch('/server-dates');
   const dates = await response.json();
@@ -30,10 +31,11 @@ async function getServerDates() {
         createListElement('Server was accessed on: ' + stats.date.day + '/' 
                                                      + stats.date.month + '/' 
                                                      + stats.date.year + ' at ' 
-                                                     + stats.time.minute + ':' 
-                                                     + stats.time.hour));
+                                                     + stats.time.hour + ':' 
+                                                     + stats.time.minute));
   });
 }
+
 /** Creates an <li> element containing text. */
 function createListElement(text) {
   const liElement = document.createElement('li');
