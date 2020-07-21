@@ -12,6 +12,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * Adds a random welcome to the page.
+ */
+async function getRandomWelcome() {
+  const response = await fetch('/random-welcome');
+  const welcome = await response.text();
+  document.getElementById('welcome-msg').innerText = welcome;
+}
+
+async function getServerDates() {
+  const response = await fetch('/server-dates');
+  const dates = await response.json();
+  const body = document.getElementsByTagName('body')[0];
+  body.innerHTML = '';
+  dates.forEach(function(stats) {
+    body.appendChild(
+        createListElement('Server was accessed on: ' + stats.date.day + '/' 
+                                                     + stats.date.month + '/' 
+                                                     + stats.date.year + ' at ' 
+                                                     + stats.time.hour + ':' 
+                                                     + stats.time.minute));
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
 (function ($) {
   "use strict";
   

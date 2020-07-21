@@ -42,7 +42,6 @@ var travelSlideshow = {
     this.disableAllDots(dots);
 
     // Make current photo visible
-    console.log(this.slideIndex);
     slides[this.slideIndex].style.display = "block";  
     dots[this.slideIndex].className += " active";
 
@@ -50,6 +49,7 @@ var travelSlideshow = {
     setTimeout(this.plusSlides.bind(this), 3000, 1);
   }
 }
+
 // Execute this after page loads
 document.addEventListener('DOMContentLoaded', function() {
   travelSlideshow.showSlides(0);
