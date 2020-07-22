@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="comments.js"></script>
     </head>
   <body>
     <!-- Navigation Bar -->
@@ -51,14 +52,14 @@
           <h2 class="section-heading text-uppercase">Review</h2>
           <h3 class="section-subheading text-muted">If you appreciate my work, please leave me a review</h3>
         </div>
-        <form action="/text" method="POST">
+        <form action="/comments" method="POST">
           <div class="form-group">
-            <label for="reviewer-name">Name</label>
-            <input type="text" class="form-control" id="reviewer-name" placeholder="Enter your name">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter your name" required="True">
           </div>
           <div class="form-group">
-            <label for="reviewer-comment">Comment</label>
-            <textarea class="form-control" id="reviewer-comment" rows="3"></textarea>
+            <label for="comment">Comment</label>
+            <textarea class="form-control" name="comment" rows="3" required></textarea>
           </div>
 
           <input type="submit" class='btn btn-primary' value="Add review">
