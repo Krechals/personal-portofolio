@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that processes text. */
 @WebServlet("/comments")
 public final class ServerCommentsServlet extends HttpServlet {
 
@@ -29,26 +28,11 @@ public final class ServerCommentsServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get the input from the form.
+    // Get & store the input from the comment section.
     String reviewerName = getParameter(request, "name", "Anonymous");
     String reviewerComment = getParameter(request, "comment", "");
     reviews.add(new ReviewerData(reviewerName, reviewerComment));
     
-    // boolean upperCase = Boolean.parseBoolean(getParameter(request, "upper-case", "false"));
-    // boolean sort = Boolean.parseBoolean(getParameter(request, "sort", "false"));
-
-    // // Convert the text to upper case.
-    // if (upperCase) {
-    //   text = text.toUpperCase();
-    // }
-
-    // // Break the text into individual words.
-    // String[] words = text.split("\\s*,\\s*");
-
-    // // Sort the words.
-    // if (sort) {
-    //   Arrays.sort(words);
-    // }
     // Convert the comments to JSON
     String reviewJson = convertToJson(reviews);
     System.out.println(reviewerName + ' ' + reviewerComment);
@@ -62,6 +46,7 @@ public final class ServerCommentsServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {  
     // Convert the server dates to JSON
     String reviewJson = convertToJson(reviews);
+
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(reviewJson);

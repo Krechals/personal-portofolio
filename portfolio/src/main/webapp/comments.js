@@ -1,5 +1,4 @@
 
-
 function getUserAvatar() {
   const avatar = document.createElement("a");
   avatar.className = "pull-left";
@@ -15,7 +14,7 @@ function getUserAvatar() {
   return avatar;
 }
 
-function getUserComment() {
+function getUserComment(userName, userComment) {
   const comment = document.createElement("div");
   comment.className = "media-body";
 
@@ -31,26 +30,34 @@ function getUserComment() {
 
     return date
   }
-  // Hardcoded for now
-  function getAuthorName() {
+
+  function getAuthorName(userName) {
     const name = document.createElement("strong");
     name.className = "text-success";
-    name.appendChild(document.createTextNode("@Andrei"));
+    name.appendChild(document.createTextNode("@" + userName));
 
     return name;
   }
-  // Hardcoded for now
-  function getCommentText() {
+
+  function getCommentText(userComment) {
     const text = document.createElement("p");
     text.className = "comment-text";
-    text.appendChild(document.createTextNode("Lorem ipsum dolor sit amet"));
+    
+    /**  --> This make XSS possible
+     * Ex: <img src="" onerror="alert('xxs')">
+     *
+     * text.innerHTML = userComment; 
+     */
+    
+    // This prevents XSS
+    text.appendChild(document.createTextNode(userComment));
     
     return text;
   }
   
   comment.appendChild(getCommentDate());
-  comment.appendChild(getAuthorName());
-  comment.appendChild(getCommentText());
+  comment.appendChild(getAuthorName(userName));
+  comment.appendChild(getCommentText(userComment));
 
   return comment;
 }
@@ -60,7 +67,7 @@ function createListElement(review) {
   const liElement = document.createElement('li');
   liElement.className = "media";
   liElement.appendChild(getUserAvatar());
-  liElement.appendChild(getUserComment());
+  liElement.appendChild(getUserComment(review.name, review.comment));
   return liElement;
 }
 
