@@ -62,7 +62,6 @@ public final class ServerCommentsServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {  
     // Convert the server dates to JSON
     String reviewJson = convertToJson(reviews);
-    System.out.println("hello");
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(reviewJson);
