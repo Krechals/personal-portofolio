@@ -3,6 +3,7 @@ function getAvatarImage(src, className) {
   const image = document.createElement("img");
   image.className = className;
   image.setAttribute("src", src);
+  
   return image;
 }
 
