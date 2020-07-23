@@ -31,9 +31,6 @@ public final class ServerDatesServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  /**
-   * Converts list of dates into a JSON string using the Gson library.
-   */
   private static String convertToJson(List<ServerStats> dateList) {
     Gson gson = new Gson();
     return gson.toJson(dateList);

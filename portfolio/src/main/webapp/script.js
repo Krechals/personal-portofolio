@@ -16,7 +16,7 @@
  * Adds a random welcome to the page.
  */
 async function getRandomWelcome() {
-  const response = await fetch('/random-welcome');
+  const response = await fetch('/random-welcome-msg');
   const welcome = await response.text();
   document.getElementById('welcome-msg').innerText = welcome;
 }

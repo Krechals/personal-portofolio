@@ -328,6 +328,23 @@ body {
   }
 }
 
+/* Comments */
+.comment-wrapper .panel-body {
+    max-height: 650px;
+    overflow: auto;
+}
+
+.comment-wrapper .media-list .media img {
+    border: 2px solid #e5e7e8;
+    height: 64px;
+    width: 64px;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom: 1px dashed #efefef;
+    margin-bottom: 25px;
+}
+
 .slides {
   display: none;
   max-width: 600px;
