@@ -1,16 +1,17 @@
 
+function getAvatarImage(src, className) {
+  const image = document.createElement("img");
+  image.className = className;
+  image.setAttribute("src", src);
+  return image;
+}
+
 function getUserAvatar() {
   const avatar = document.createElement("a");
   avatar.className = "pull-left";
   avatar.setAttribute("href", "http://google.com");
+  avatar.appendChild(getAvatarImage("images/default_user.jpg", "rounded"));
 
-  function getAvatarImage() {
-    const image = document.createElement("img");
-    image.className = "rounded";
-    image.setAttribute("src", "images/default_user.jpg");
-    return image;
-  }
-  avatar.appendChild(getAvatarImage());
   return avatar;
 }
 

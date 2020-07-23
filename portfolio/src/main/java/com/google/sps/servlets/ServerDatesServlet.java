@@ -7,8 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +31,6 @@ public final class ServerDatesServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
-  /**
-   * Converts list of dates into a JSON string using the Gson library.
-   */
   private static String convertToJson(List<ServerStats> dateList) {
     Gson gson = new Gson();
     return gson.toJson(dateList);

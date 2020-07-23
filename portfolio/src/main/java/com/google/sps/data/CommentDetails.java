@@ -1,10 +1,10 @@
 package com.google.sps.data; 
 
-public final class ReviewerData {
+public final class CommentDetails {
   private final String name;
   private final String comment;
 
-  public ReviewerData(String name, String comment) {
+  public CommentDetails(String name, String comment) {
     this.name = name;
     this.comment = comment;
   }

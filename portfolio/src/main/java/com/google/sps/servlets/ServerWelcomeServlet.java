@@ -22,10 +22,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/random-welcome")
-public class DataServlet extends HttpServlet {
-
+// Servlet that returns some example content.
+@WebServlet("/random-welcome-msg")
+public class ServerWelcomeServlet extends HttpServlet {
   private final List<String> welcomes = new ArrayList<>();
 
   @Override
