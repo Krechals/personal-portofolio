@@ -29,7 +29,7 @@ public final class ServerCommentsServlet extends HttpServlet {
     }
     return value;
   }
-
+  
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get & store the input from the comment section.
@@ -49,8 +49,7 @@ public final class ServerCommentsServlet extends HttpServlet {
   // Used to fetch data in frontend 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {  
-    List<CommentDetails> comments = new ArrayList<>();
-    comments = extractComments();
+    List<CommentDetails> comments = extractComments();
     String commentJson = convertToJson(comments);
 
     // Send the JSON as the response
