@@ -12,6 +12,7 @@ public final class CommentDetails {
   public String getName() {
     return name;
   }
+
   public String getComment() {
     return comment;
   }
