@@ -94,7 +94,7 @@ function displayErrors() {
         icon: 'error',
         title: 'Name Error',
         text: 'Your name contains characters that are not allowed.',
-        footer: '<a href="contact.html">Try with another name!</a>'
+        footer: '<a href="contact.html">Try with another name! </a> Symbols allowed: ?!,.("'
       });
     return;
   } else if (error === "incorrect-comment") {
@@ -102,7 +102,7 @@ function displayErrors() {
         icon: 'error',
         title: 'Comment Error',
         text: 'Your comment contains characters that are not allowed.',
-        footer: '<a href="contact.html">Try again!</a>'
+        footer: '<a href="contact.html">Try again! </a> Symbols allowed: ?!,.("'
       });
     return;
   }

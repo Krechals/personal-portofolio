@@ -6,9 +6,8 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.gson.Gson;
+import com.google.sps.common.Constants;
 import com.google.sps.data.CommentDetails;
-import com.google.sps.validators.CommentValidator;
-import com.google.sps.validators.NameValidator;
 import com.google.sps.validators.TextValidator;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,8 +37,8 @@ public final class ServerCommentsServlet extends HttpServlet {
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
-    TextValidator nameValidator = new NameValidator(userName);
-    TextValidator commValidator = new CommentValidator(userComment);
+    TextValidator nameValidator = new TextValidator(userName, Constants.NAME_LENGTH_LIMIT);
+    TextValidator commValidator = new TextValidator(userComment, Constants.COMMENT_LENGTH_LIMIT);
 
     if (!nameValidator.validate()) {
       response.sendRedirect("/contact.html?error=incorrect-name");
