@@ -6,7 +6,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.gson.Gson;
+import com.google.sps.common.Constants;
 import com.google.sps.data.CommentDetails;
+import com.google.sps.validators.TextValidator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,15 @@ public final class ServerCommentsServlet extends HttpServlet {
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
+
+    if (!TextValidator.getInstance().validate(userName, TextValidator.InputType.NAME)) {
+      response.sendRedirect("/contact.html?error=incorrect-name");
+      return;
+    }
+    if (!TextValidator.getInstance().validate(userComment,TextValidator.InputType.COMMENT)) {
+      response.sendRedirect("/contact.html?error=incorrect-comment");
+      return;
+    }
 
     Entity commentEntity = new Entity("CommentDetails");
     commentEntity.setProperty("name", userName);

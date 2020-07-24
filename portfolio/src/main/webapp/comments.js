@@ -82,3 +82,33 @@ async function getComments() {
     displayList.appendChild(createListElement(review));
   });
 }
+
+// Display any potential error that comes from backend
+function displayErrors() {
+  const url_string = window.location.href; //window.location.href
+  const url = new URL(url_string);
+  const error = url.searchParams.get("error");
+
+  if (error === "incorrect-name") {
+    Swal.fire({
+        icon: 'error',
+        title: 'Name Error',
+        text: 'Your name contains characters that are not allowed.',
+        footer: '<a href="contact.html">Try with another name! </a> Symbols allowed: ?!,.("'
+      });
+    return;
+  } else if (error === "incorrect-comment") {
+    Swal.fire({
+        icon: 'error',
+        title: 'Comment Error',
+        text: 'Your comment contains characters that are not allowed.',
+        footer: '<a href="contact.html">Try again! </a> Symbols allowed: ?!,.("'
+      });
+    return;
+  }
+}
+
+function displayContent() {
+  displayErrors();
+  getComments();
+}
