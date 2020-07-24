@@ -37,14 +37,12 @@ public final class ServerCommentsServlet extends HttpServlet {
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
-    TextValidator nameValidator = new TextValidator(userName, Constants.NAME_LENGTH_LIMIT);
-    TextValidator commValidator = new TextValidator(userComment, Constants.COMMENT_LENGTH_LIMIT);
 
-    if (!nameValidator.validate()) {
+    if (!TextValidator.getInstance().validate(userName, TextValidator.INPUT_TYPE.NAME)) {
       response.sendRedirect("/contact.html?error=incorrect-name");
       return;
     }
-    if (!commValidator.validate()) {
+    if (!TextValidator.getInstance().validate(userComment,TextValidator.INPUT_TYPE.COMMENT)) {
       response.sendRedirect("/contact.html?error=incorrect-comment");
       return;
     }

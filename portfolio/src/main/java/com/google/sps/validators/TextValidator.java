@@ -1,25 +1,37 @@
 package com.google.sps.validators;
 
+import com.google.sps.common.Constants;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class TextValidator {
+  // Singleton Design Pattern
+  private static TextValidator validator; 
+
   // Allow only alphanumeric chars and few extra symbols.
-  private static final String validPattern = "^([A-z]|[0-9]|[\\?!,.(\" ])*$";
+  private static final Pattern validPattern = Pattern.compile(Constants.TEXT_VALID_REGEX);
 
-  private final int lengthLimit;
+  public enum INPUT_TYPE { NAME, COMMENT; }
 
-  private final String text;
+  private TextValidator() {}
 
-  public TextValidator(String text, int lengthLimit) {
-    this.text = text;
-    this.lengthLimit = lengthLimit;
+  public static TextValidator getInstance() {
+    if (validator == null) {
+      validator = new TextValidator(); 
+    }
+    return validator; 
   }
 
-  public boolean validate() {
-    Pattern pattern = Pattern.compile(validPattern);
-    Matcher matcher = pattern.matcher(text);
+  public boolean validate(String text, INPUT_TYPE type) {
+    Matcher matcher = validPattern.matcher(text);
 
-    return matcher.find() && text.length() <= lengthLimit;
+    switch(type) {
+      case NAME:
+        return matcher.find() && text.length() <= Constants.NAME_LENGTH_LIMIT;
+      case COMMENT:
+        return matcher.find() && text.length() <= Constants.COMMENT_LENGTH_LIMIT;
+    }
+
+    return matcher.find() && text.length() <= Constants.DEFAULT_LENGTH_LIMIT;
   }
 }
