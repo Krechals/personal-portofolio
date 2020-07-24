@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class CommentValidator implements TextValidator {
-  // Allow only alphanumeric chars and few extra symbols.
   private static final int maxNoChars = 10000;
 
   private final String text;

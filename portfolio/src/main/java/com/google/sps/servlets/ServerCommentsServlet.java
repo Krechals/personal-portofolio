@@ -42,14 +42,14 @@ public final class ServerCommentsServlet extends HttpServlet {
     TextValidator commValidator = new CommentValidator(userComment);
 
     if (!nameValidator.validate()) {
-      response.sendRedirect("/index.html");
+      response.sendRedirect("/contact.html?error=incorrect-name");
       return;
     }
     if (!commValidator.validate()) {
-      response.sendRedirect("/index.html");
+      response.sendRedirect("/contact.html?error=incorrect-comment");
       return;
     }
-    
+
     Entity commentEntity = new Entity("CommentDetails");
     commentEntity.setProperty("name", userName);
     commentEntity.setProperty("comment", userComment);
