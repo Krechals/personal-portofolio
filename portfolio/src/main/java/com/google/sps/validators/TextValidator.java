@@ -11,7 +11,7 @@ public final class TextValidator {
   // Allow only alphanumeric chars and few extra symbols.
   private static final Pattern validPattern = Pattern.compile(Constants.TEXT_VALID_REGEX);
 
-  public enum INPUT_TYPE { NAME, COMMENT; }
+  public enum InputType { NAME, COMMENT; }
 
   private TextValidator() {}
 
@@ -22,7 +22,7 @@ public final class TextValidator {
     return validator; 
   }
 
-  public boolean validate(String text, INPUT_TYPE type) {
+  public boolean validate(String text, InputType type) {
     Matcher matcher = validPattern.matcher(text);
 
     switch(type) {

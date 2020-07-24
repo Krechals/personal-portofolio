@@ -38,11 +38,11 @@ public final class ServerCommentsServlet extends HttpServlet {
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
 
-    if (!TextValidator.getInstance().validate(userName, TextValidator.INPUT_TYPE.NAME)) {
+    if (!TextValidator.getInstance().validate(userName, TextValidator.InputType.NAME)) {
       response.sendRedirect("/contact.html?error=incorrect-name");
       return;
     }
-    if (!TextValidator.getInstance().validate(userComment,TextValidator.INPUT_TYPE.COMMENT)) {
+    if (!TextValidator.getInstance().validate(userComment,TextValidator.InputType.COMMENT)) {
       response.sendRedirect("/contact.html?error=incorrect-comment");
       return;
     }
