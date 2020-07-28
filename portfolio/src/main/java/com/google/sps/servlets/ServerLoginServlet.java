@@ -24,16 +24,14 @@ public final class ServerLoginServlet extends HttpServlet {
 
     UserService userService = UserServiceFactory.getUserService();
 
-    // If user is not logged in
     if (!userService.isUserLoggedIn()) {
       String loginUrl = userService.createLoginURL("/contact.html");
-      out.println("Log in <a href=\"" + loginUrl + "\">here</a> to add a comment.");
+      out.println("<a href=\"" + loginUrl + "\">Log in </a> to add a comment.");
       return;
     }
 
-    // User is logged in
     String logoutUrl = userService.createLogoutURL("/contact.html");
     out.println("Your are logged in as " + userService.getCurrentUser().getEmail() + ".");
-    out.println("You can logout <a href=\"" + logoutUrl + "\">here</a>.");
+    out.println("If you want to change the accout, you can <a href=\"" + logoutUrl + "\">logout</a>.");
   }
 }

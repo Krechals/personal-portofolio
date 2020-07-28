@@ -43,6 +43,7 @@ public final class ServerCommentsServlet extends HttpServlet {
       response.sendRedirect("/contact.html?error=login-required");
       return;
     }
+    
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");

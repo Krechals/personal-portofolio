@@ -121,7 +121,7 @@ function displayErrors() {
         icon: 'error',
         title: 'You are not logged in!',
         text: 'You must log in to use the comment section.',
-        footer: 'Log in <a href="login">here</a>.'
+        footer: '<a href="login">Log in</a>.'
       });
     return;
   }
