@@ -116,6 +116,14 @@ function displayErrors() {
         footer: '<a href="contact.html">Try again! </a> Symbols allowed: ?!,.("'
       });
     return;
+  } else if (error === "login-required") {
+    Swal.fire({
+        icon: 'error',
+        title: 'You are not logged in!',
+        text: 'You must log in to use the comment section.',
+        footer: 'Log in <a href="login">here</a>.'
+      });
+    return;
   }
 }
 

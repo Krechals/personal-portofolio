@@ -40,7 +40,7 @@ public final class ServerCommentsServlet extends HttpServlet {
 
     // Only logged-in users can comment
     if (!userService.isUserLoggedIn()) {
-      response.sendRedirect("/login");
+      response.sendRedirect("/contact.html?error=login-required");
       return;
     }
     // Get & store the input from the comment section.
