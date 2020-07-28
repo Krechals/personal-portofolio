@@ -83,6 +83,17 @@ async function getComments() {
   });
 }
 
+async function getLoginStatus() {
+  const response = await fetch('/login');
+  const loginStatus = await response.text();
+  const loginStatusClass = document.querySelectorAll('.page-section .container .text-center')[0];
+  
+  const pElement = document.createElement('p');
+  pElement.className = "text-center";
+  pElement.innerHTML = loginStatus;
+  loginStatusClass.appendChild(pElement);
+}
+
 // Display any potential error that comes from backend
 function displayErrors() {
   const url_string = window.location.href; //window.location.href
@@ -105,10 +116,19 @@ function displayErrors() {
         footer: '<a href="contact.html">Try again! </a> Symbols allowed: ?!,.("'
       });
     return;
+  } else if (error === "login-required") {
+    Swal.fire({
+        icon: 'error',
+        title: 'You are not logged in!',
+        text: 'You must log in to use the comment section.',
+        footer: '<a href="login">Log in</a>.'
+      });
+    return;
   }
 }
 
 function displayContent() {
   displayErrors();
+  getLoginStatus();
   getComments();
 }
