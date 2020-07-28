@@ -5,6 +5,8 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import com.google.sps.common.Constants;
 import com.google.sps.data.CommentDetails;
@@ -34,6 +36,15 @@ public final class ServerCommentsServlet extends HttpServlet {
   
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    UserService userService = UserServiceFactory.getUserService();
+
+    // Only logged-in users can comment
+     System.out.println(userService.isUserLoggedIn());
+    if (!userService.isUserLoggedIn()) {
+      response.sendRedirect("/login");
+      return;
+    }
+    System.out.println("test2");
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
