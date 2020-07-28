@@ -39,12 +39,10 @@ public final class ServerCommentsServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
 
     // Only logged-in users can comment
-     System.out.println(userService.isUserLoggedIn());
     if (!userService.isUserLoggedIn()) {
       response.sendRedirect("/login");
       return;
     }
-    System.out.println("test2");
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");

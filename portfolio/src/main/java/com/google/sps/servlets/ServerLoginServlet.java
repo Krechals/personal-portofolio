@@ -16,22 +16,24 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("login")
 public final class ServerLoginServlet extends HttpServlet {
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
+
     UserService userService = UserServiceFactory.getUserService();
 
-    // If user is not logged in, show a login form (could also redirect to a login page)
+    // If user is not logged in
     if (!userService.isUserLoggedIn()) {
-      String loginUrl = userService.createLoginURL("/login");
-      out.println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
+      String loginUrl = userService.createLoginURL("/contact.html");
+      out.println("Log in <a href=\"" + loginUrl + "\">here</a> to add a comment.");
       return;
     }
 
-    // User is logged in and has a nickname, so the request can proceed
-    String logoutUrl = userService.createLogoutURL("/login");
-    out.println("<h1>Home</h1>");
-    out.println("<p>Logout <a href=\"" + logoutUrl + "\">here</a>.</p>");
+    // User is logged in
+    String logoutUrl = userService.createLogoutURL("/contact.html");
+    out.println("Your are logged in as " + userService.getCurrentUser().getEmail() + ".");
+    out.println("You can logout <a href=\"" + logoutUrl + "\">here</a>.");
   }
 }
