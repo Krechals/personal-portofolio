@@ -16,7 +16,7 @@ function getUserAvatar() {
   return avatar;
 }
 
-function getUserComment(userName, userComment) {
+function getUserComment(userName, userComment, commentSentiment) {
   const comment = document.createElement("div");
   comment.className = "media-body";
 
@@ -56,9 +56,36 @@ function getUserComment(userName, userComment) {
     
     return text;
   }
+
+  function getCommentSentiment(commentSentiment) {
+    const card = document.createElement("div");
+    let classCard = "card text-white mb-3 ";
+
+    if (commentSentiment === "POSITIVE") {
+      classCard = classCard + "bg-success";
+    } else if (commentSentiment === "NEGATIVE") {
+      classCard = classCard + "bg-danger";
+    } else {
+      classCard = classCard + "bg-warning";
+    }
+    card.className = classCard;
+
+    const cardBody = document.createElement("div");
+    cardBody.className = "card-text";
+
+    const sentimentText = document.createElement("p");
+    sentimentText.className = "card-title"
+    sentimentText.innerHTML = commentSentiment;
+
+    cardBody.appendChild(sentimentText);
+    card.appendChild(cardBody);
+
+    return card;
+  }
   
   comment.appendChild(getCommentDate());
   comment.appendChild(getAuthorName(userName));
+  comment.appendChild(getCommentSentiment(commentSentiment));
   comment.appendChild(getCommentText(userComment));
 
   return comment;
@@ -69,7 +96,7 @@ function createListElement(review) {
   const liElement = document.createElement('li');
   liElement.className = "media";
   liElement.appendChild(getUserAvatar());
-  liElement.appendChild(getUserComment(review.name, review.comment));
+  liElement.appendChild(getUserComment(review.name, review.comment, review.sentiment));
   return liElement;
 }
 
