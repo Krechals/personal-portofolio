@@ -36,11 +36,11 @@ public final class ServerCommentsServlet extends HttpServlet {
   }
 
   private static String evaluateComment(String userComment) {
-    SentimentAnalysis.TextEvaluation commentSentiment;
+    SentimentAnalysis.SentimentCategory commentSentiment;
     try {
       commentSentiment = SentimentAnalysis.evaluate(userComment);
     } catch(IOException exception) {
-      commentSentiment = SentimentAnalysis.TextEvaluation.NEUTRAL;
+      commentSentiment = SentimentAnalysis.SentimentCategory.NEUTRAL;
     }
     return commentSentiment.toString();
   }

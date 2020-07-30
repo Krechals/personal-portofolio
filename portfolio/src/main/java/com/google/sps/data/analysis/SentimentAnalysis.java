@@ -8,14 +8,13 @@ import java.io.IOException;
 
 public final class SentimentAnalysis {
 
-  public enum TextEvaluation { POSITIVE, NEUTRAL, NEGATIVE; }
+  public enum SentimentCategory { POSITIVE, NEUTRAL, NEGATIVE; }
 
   /**
    * @return the feeling detected by Cloud Natural Language API,
    *         when querying a comment from the website.
    */
-  public static TextEvaluation evaluate(String text) throws IOException {
-
+  public static SentimentCategory evaluate(String text) throws IOException {
     Document doc =
         Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
@@ -24,10 +23,10 @@ public final class SentimentAnalysis {
     languageService.close();
 
     if (score >= Constants.MIN_POSITIVE_SCORE) {
-      return TextEvaluation.POSITIVE;
+      return SentimentCategory.POSITIVE;
     } else if (score <= Constants.MIN_NEGATIVE_SCORE) {
-      return TextEvaluation.NEGATIVE;
+      return SentimentCategory.NEGATIVE;
     }
-    return TextEvaluation.NEUTRAL;
+    return SentimentCategory.NEUTRAL;
   }
 }
