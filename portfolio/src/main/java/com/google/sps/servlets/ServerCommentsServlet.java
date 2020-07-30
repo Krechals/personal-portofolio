@@ -10,6 +10,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import com.google.sps.common.Constants;
 import com.google.sps.data.CommentDetails;
+import com.google.sps.data.analysis.SentimentAnalysis;
 import com.google.sps.validators.TextValidator;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +33,16 @@ public final class ServerCommentsServlet extends HttpServlet {
       return defaultValue;
     }
     return value;
+  }
+
+  private static String evaluateComment(String userComment) {
+    SentimentAnalysis.SentimentCategory commentSentiment;
+    try {
+      commentSentiment = SentimentAnalysis.evaluate(userComment);
+    } catch(IOException exception) {
+      commentSentiment = SentimentAnalysis.SentimentCategory.NEUTRAL;
+    }
+    return commentSentiment.toString();
   }
   
   @Override
@@ -57,9 +68,12 @@ public final class ServerCommentsServlet extends HttpServlet {
       return;
     }
 
+    String commentSentiment = evaluateComment(userComment);
+    
     Entity commentEntity = new Entity("CommentDetails");
     commentEntity.setProperty("name", userName);
     commentEntity.setProperty("comment", userComment);
+    commentEntity.setProperty("sentiment", commentSentiment);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
@@ -89,8 +103,9 @@ public final class ServerCommentsServlet extends HttpServlet {
     for (Entity entity : results.asIterable()) {
       String userName = (String) entity.getProperty("name");
       String userComment = (String) entity.getProperty("comment");
+      String commentSentiment = (String) entity.getProperty("sentiment");
 
-      CommentDetails comment = new CommentDetails(userName, userComment);
+      CommentDetails comment = new CommentDetails(userName, userComment, commentSentiment);
       comments.add(comment);
     }
 
