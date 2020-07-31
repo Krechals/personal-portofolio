@@ -11,15 +11,18 @@
     <!-- Bootstrap open-source CSS framework -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
+    <!-- JQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="script.js"></script>
     <script src="oauth.js"></script>
-    <script src="comments.js"></script>
     <link rel="stylesheet" href="style.css">
     </head>
   <body onload="displayContent()">
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
       <div class="container">
         <a class="navbar-brand" href="index.html">Home</a>
 
@@ -59,13 +62,13 @@
           <h3 class="section-subheading text-muted">If you appreciate my work, please leave me a review</h3>
         </div>
 
-        <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
+        <div class="g-signin2" data-onsuccess="signIn" id="myP"></div>
         <img id="myImg"><br>
         <p id="name"></p>
         <div id="status"></div>
-        
-        <button onclick="myFunction()">Sign Out</button>
-        <form action="/comments" method="POST">
+        <button onclick="signOut()">Sign Out</button>
+
+        <form name="commentForm" action="/comments" method="POST">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" placeholder="Enter your name" required="True">
@@ -105,4 +108,5 @@
       </div>
     </section>
   </body>
+  <script src="comments.js"></script>
 </html>
