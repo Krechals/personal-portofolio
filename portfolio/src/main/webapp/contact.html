@@ -3,13 +3,17 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="google-signin-clinet-id" content="">
     <title>Portofolio &mdash; Andrei Topala</title>
 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="614574318753-7vu4mtmug0qo99mq8cn06nhrv3dh2nj7.apps.googleusercontent.com">
     <!-- Bootstrap open-source CSS framework -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="script.js"></script>
+    <script src="oauth.js"></script>
     <script src="comments.js"></script>
     <link rel="stylesheet" href="style.css">
     </head>
@@ -54,6 +58,13 @@
           <h2 class="section-heading text-uppercase">Review</h2>
           <h3 class="section-subheading text-muted">If you appreciate my work, please leave me a review</h3>
         </div>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
+        <img id="myImg"><br>
+        <p id="name"></p>
+        <div id="status"></div>
+        
+        <button onclick="myFunction()">Sign Out</button>
         <form action="/comments" method="POST">
           <div class="form-group">
             <label for="name">Name</label>
