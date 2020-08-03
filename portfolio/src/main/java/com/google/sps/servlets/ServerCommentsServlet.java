@@ -48,12 +48,6 @@ public final class ServerCommentsServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
-
-    // Only logged-in users can comment
-    if (!userService.isUserLoggedIn()) {
-      response.sendRedirect("/contact.html?error=login-required");
-      return;
-    }
     
     // Get & store the input from the comment section.
     String userName = getParameter(request, "name", "Anonymous");
