@@ -49,7 +49,7 @@ public final class ServerCommentsServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     UserService userService = UserServiceFactory.getUserService();
     
-    // Get & store the input from the comment section.
+    // Get & store the input from the comment sectiogcloud app logs readn.
     String userName = getParameter(request, "name", "Anonymous");
     String userComment = getParameter(request, "comment", "");
 
