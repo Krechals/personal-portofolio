@@ -1,6 +1,5 @@
 package com.google.sps.validators;
 
-import com.google.sps.common.Constants;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,10 +7,18 @@ public final class TextValidator {
   // Singleton Design Pattern
   private static TextValidator validator; 
 
-  // Allow only alphanumeric chars and few extra symbols.
-  private static final Pattern validPattern = Pattern.compile(Constants.TEXT_VALID_REGEX);
-
   public enum InputType { NAME, COMMENT; }
+
+  public static final int NAME_LENGTH_LIMIT = 20;
+
+  public static final int COMMENT_LENGTH_LIMIT = 10000;
+
+  private static final int DEFAULT_LENGTH_LIMIT = 5000;
+
+  private static final String TEXT_VALID_REGEX = "^([A-z]|[0-9]|[\\?!,.:(\" ])*$";
+
+  // Allow only alphanumeric chars and few extra symbols.
+  private static final Pattern validPattern = Pattern.compile(TEXT_VALID_REGEX);
 
   private TextValidator() {}
 
@@ -27,11 +34,11 @@ public final class TextValidator {
 
     switch(type) {
       case NAME:
-        return matcher.find() && text.length() <= Constants.NAME_LENGTH_LIMIT;
+        return text.length() <= NAME_LENGTH_LIMIT && matcher.find();
       case COMMENT:
-        return matcher.find() && text.length() <= Constants.COMMENT_LENGTH_LIMIT;
+        return text.length() <= COMMENT_LENGTH_LIMIT && matcher.find();
     }
 
-    return matcher.find() && text.length() <= Constants.DEFAULT_LENGTH_LIMIT;
+    return matcher.find() && text.length() <= DEFAULT_LENGTH_LIMIT;
   }
 }
