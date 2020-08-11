@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-/** */
 @RunWith(JUnit4.class)
 public final class TextValidatorTest {
 
@@ -34,72 +33,66 @@ public final class TextValidatorTest {
   @Test
   public void commonValidComment() {
     boolean actual = validator.validate(VALID1, TextValidator.InputType.COMMENT);
-    boolean expected = true;
-    Assert.assertEquals(expected, actual);
+    Assert.assertTrue(actual);
   }
 
   @Test
   public void numbersComment() {
     boolean actual = validator.validate(VALID2, TextValidator.InputType.COMMENT);
-    boolean expected = true;
-    Assert.assertEquals(expected, actual);
+    Assert.assertTrue(actual);
   }
 
   @Test
   public void symbolsComment() {
     boolean actual = validator.validate(VALID3, TextValidator.InputType.COMMENT);
-    boolean expected = true;
-    Assert.assertEquals(expected, actual);
+    Assert.assertTrue(actual);
   }
 
   @Test
   public void firstXssInjection() {
-    boolean actual = validator.validate(INVALID1, TextValidator.InputType.COMMENT);;
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    boolean actual = validator.validate(INVALID1, TextValidator.InputType.COMMENT);
+    Assert.assertFalse(actual);
   }
 
   @Test
   public void secondXssInjection() {
     boolean actual = validator.validate(INVALID2, TextValidator.InputType.COMMENT);
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    Assert.assertFalse(actual);
   }
 
   @Test
   public void otherInjection() {
     boolean actual = validator.validate(INVALID3, TextValidator.InputType.COMMENT);
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    Assert.assertFalse(actual);
   }
 
   @Test
   public void sqlInjection() {
     boolean actual = validator.validate(INVALID4, TextValidator.InputType.COMMENT);
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    Assert.assertFalse(actual);
   }
 
   @Test
   public void longComment() {
-    String comment = new String();
-    for (int i = 0; i <= TextValidator.COMMENT_LENGTH_LIMIT + 1; ++i) {
-      comment = comment + 'a';
+    char[] commentLetters = new char[TextValidator.COMMENT_LENGTH_LIMIT + 1];  
+    for (int i = 0; i <= TextValidator.COMMENT_LENGTH_LIMIT; ++i) {
+      commentLetters[i] = 'a';
     }
-    System.out.println(comment.length());
+    String comment = new String(commentLetters);
+
     boolean actual = validator.validate(comment, TextValidator.InputType.COMMENT);
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    Assert.assertFalse(actual);
   }
 
   @Test
   public void longName() {
-    String name = new String();
-    for (int i = 0; i <= TextValidator.NAME_LENGTH_LIMIT + 1; ++i) {
-      name = name + 'a';
+    char[] nameLetters = new char[TextValidator.NAME_LENGTH_LIMIT + 1];  
+    for (int i = 0; i <= TextValidator.NAME_LENGTH_LIMIT; ++i) {
+      nameLetters[i] = 'a';
     }
+    String name = new String(nameLetters);
+
     boolean actual = validator.validate(name, TextValidator.InputType.NAME);
-    boolean expected = false;
-    Assert.assertEquals(expected, actual);
+    Assert.assertFalse(actual);
   }
 }
